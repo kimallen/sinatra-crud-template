@@ -1,10 +1,10 @@
 helpers do
 	def current_user
-		@current_user ||= User.find(session[:id]) if session[:id]
+		@current_user ||= User.find_by_id(session[:id]) if session[:id]
 	end
 
 	def authorized?
-		current_user.id == session[:id]
+		current_user.id == params[:id].to_i
 	end
 
 

@@ -1,5 +1,8 @@
-<form>
+<form action="/users/<%=current_user.id%>" method='post'>
+	<input type='hidden' name='_method' value='put'>
+	<label>Name:</label>
 	<input type='text' name='user[name]' value='<%=@user.name%>'>
+	<label>Email:</label>
 	<input type='text' name='user[email]' value='<%=@user.email%>'>
-
+	<input type='submit'>
 </form>

@@ -1,6 +1,4 @@
-before '/users/*' do
-	redirect '/users' unless current_user && authorized?
-end
+
 
 ##INDEX
 get '/users' do
@@ -30,15 +28,14 @@ end
 
 ##SHOW
 get '/users/:id' do
-	
-	# redirect '/users' unless current_user && current_user.id == params[:id].to_i
+	redirect '/users' unless current_user && authorized? 
 	@user = User.find(params[:id])
 	erb :'/users/show'
 end
 
 ##EDIT FORM
 get '/users/:id/edit' do
-	redirect '/users' unless current_user.id == params[:id].to_i
+	redirect '/users' unless current_user && authorized?
 	@user = User.find(params[:id])
 	erb :'/users/edit'
 end
@@ -46,12 +43,19 @@ end
 ##UPDATE
 put '/users/:id' do
 	@user = User.find(params[:id])
+p '************'
+	p @user
+	p params
+p '************'
+	@user.update(params[:user])
 	erb :'/users/show'
 end
 
 delete '/users/:id' do
-	@user = User.find(parmas[:id])
+	@user = User.find(params[:id])
 	@user.destroy
 	session.clear
+	current_user = nil
+	redirect '/'
 
 end

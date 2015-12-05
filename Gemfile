@@ -19,6 +19,8 @@ gem 'faker'
 
 gem 'bcrypt'
 
+gem 'hirb'
+
 group :test do
   gem 'shoulda-matchers'
   gem 'rack-test'

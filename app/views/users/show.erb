@@ -1,3 +1,8 @@
 <h1>User Profile</h1>
 <p><%= @user.name %></p>
 <p><%= @user.email %></p>
+<a href='/users/<%=current_user.id %>/edit'><button>Edit Profile</button></a>
+<form action='/users/<%=current_user.id %>' method= 'post'>
+	<input type="hidden" name="_method" value='delete'>
+	<input type='submit' value='Delete Profile'>
+</form>
