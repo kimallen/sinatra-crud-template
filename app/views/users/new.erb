@@ -1,0 +1,10 @@
+
+<%=flash[:sign_up_error]%>
+
+<form action='/users' method='post'>
+	<input type='text' name='user[name]' placeholder='Your name'>
+	<input type='text' name='user[email]' placeholder='email address'>
+	<input type='password' name='user[password]' placeholder='password'>
+	<input type='submit' value="Login">
+
+</form>
